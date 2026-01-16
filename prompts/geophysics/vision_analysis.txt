@@ -1,0 +1,42 @@
+你是一位专业的地球物理学家。请分析这张地球物理反演图像。
+
+【背景信息】
+图注 (Caption): {caption}
+原文解释: {original_interpretation}
+文章元数据: {paper_info}
+
+【分析要求】
+
+### 1. 物性参数识别
+- 确定图像显示的物性参数（如：P波速度、S波速度、电导率、密度、Q值等）。
+- 根据坐标轴/色标判断异常方向（红色代表高速还是低速？）。
+- 明确是绝对值还是扰动值（%）。
+
+### 2. 异常特征详细描述
+请提取图中显著的异常区域，关注：
+- **位置**: 深度范围、经纬度范围（利用图中的坐标轴估算）。
+- **性质**: 高速/低速、高导/高阻、高密度/低密度。
+- **形态**: 板片状（Slab）、柱状（Plume）、拆离（Detachment）、层状等。
+- **强度**: 异常的相对强弱（如 dVp > 2%）。
+
+### 3. 图像类型判断
+- 判断该图是否为有效的反演切片图 (is_inversion_image)。
+- 排除：图例(Legend)、纯地图(Map)、公式(Formula)、统计图(Plot)、示意图(Cartoon)。
+
+【输出格式】
+请返回 JSON 格式结果：
+{{
+    "is_inversion_image": true/false,
+    "image_type": "inversion_map/legend/map/other",
+    "parameter_type": "string (e.g., P-wave velocity perturbation)",
+    "anomalies": [
+        {{
+            "location": "深度: 100-200km, 纬度: 2-4°N",
+            "nature": "低速 (Low Velocity)",
+            "shape": "垂直柱状",
+            "description": "显著的低速异常，延伸至深部，可能指示岩浆通道。",
+            "confidence": 0.9
+        }}
+    ],
+    "summary": "简要总结图中显示的主要地质结构特征..."
+}}

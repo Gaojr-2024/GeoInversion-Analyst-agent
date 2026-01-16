@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+venv/
+venv_new/
+.venv/
+env/
+
+# Environment Variables
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Data & Outputs
+data/processed/
+data/output/
+data/vector_store/
+mineru_results/
+examples/integrated_output/
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.json
+*.md
+!README.md
+!introduce.md
+!examples/README.md
+!data/input/.gitkeep
+
+# System
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

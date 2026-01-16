@@ -1,0 +1,27 @@
+你是一个地球物理检索专家。请根据以下地质反演结果（Workflow I），生成 5-8 个用于 OpenAlex API 的英文检索关键词组合。
+
+目标：检索与该区域、该异常特征、该物性参数高度相关的学术文献。
+
+输入数据：
+{{wf1_bundle_json}}
+
+要求：
+1. **必须使用英文 (MUST BE IN ENGLISH)**。所有检索词、地名、特征描述都必须翻译成标准英文术语。
+2. 每个检索式应该是 "Region Property Feature" 的组合。
+3. 区域词（Region）必须准确且使用英文通用名（如 "Sumatra", "Sunda Arc", "Tibet", "Himalaya"）。
+4. 物性词（Property）必须对应且使用英文术语（如 "Seismic Velocity", "Attenuation", "Tomography", "Resistivity"）。
+5. 不要使用复杂的布尔逻辑（AND/OR），OpenAlex 的 search 参数更喜欢自然语言短语或简单的关键词组合。
+6. 返回 JSON 格式，包含 "queries" (列表) 和 "negative_terms" (列表)。
+
+Example Output JSON:
+{
+  "queries": [
+    "Sumatra seismic tomography", 
+    "Sunda Arc mantle wedge attenuation",
+    "Forearc basin structure Sumatra"
+  ],
+  "negative_terms": [
+    "medical imaging",
+    "material science"
+  ]
+}
